@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+{% extends "navbar.html" %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to Hyper Blogs!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{% block body %}
+
+<body>
+    <br>
+    <div class="card-deck">
+        {% for post in posts|sort(attribute='0')|reverse %}
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title mb-3"><a href = "/post/{{post[1]}}">{{ post[2] }}</a></h5>
+                <p class="card-text">{{ post[3] }}</p>
+            </div>
+        </div>
+    
+        {% if loop.index % 3 == 0 %}
+    </div>
+    <div class="card-deck">
+        {% endif %}
+    
+        {% endfor %}
+    </div>    
+
+
+</body>
+{% endblock %}
+
+</html>

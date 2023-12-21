@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    {% extends "navbar.html" %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Welcome to Hyper Blogs!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    {% block body %}
+    <body>
+       <h2>{{title}} posted on {{date}}</h2>
+       <h3>Author: {{author}}</h3>
+        <p>
+            {{text}}
+        </p>
+        {{likes}} likes
+    </body>
+    {% endblock %}
+</html>

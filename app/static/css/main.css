@@ -1,0 +1,74 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+.navbar a {
+  display: inline-block;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+.navbar :hover {
+  background-color: lightgray;
+  color: black;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Ensures the form is centered within the viewport */
+}
+
+.login-form {
+  display: inline-block;
+  width: 20%;
+}
+
+.new-post-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.new-post-form {
+  margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form-group {
+  min-width: 30%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  /* Adjust button spacing */
+  width: 15%;
+  /* Ensure buttons span the entire width of the form */
+  margin-top: 10px;
+  /* Adjust margin as needed */
+}
+
+.btn {
+  flex: 1;
+  /* Allow buttons to share available space */
+  margin: 0 5px;
+  /* Adjust button margins */
+}
+
+#welcome {
+  text-align:center;
+}

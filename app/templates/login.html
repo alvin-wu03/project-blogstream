@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    {% extends "navbar.html" %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Hyper Blogs | Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    {% block body %}
+    <body>
+        <div class = "form-wrapper">
+            <div class = "login-form">
+                <form action = "/authenticate" method="post">
+                    <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" name = "username"/>
+                    </div>
+                
+                    <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name = "password"/>
+                    </div>
+                              
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                
+                    <!-- Register buttons -->
+                    <div class="text-center">
+                    <p>Not a member? <a href="/registration">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="" async defer></script>
+    </body>
+    {% endblock %}
+</html>
