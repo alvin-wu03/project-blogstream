@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html>
-    {% extends "navbar.html" %}
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Welcome to Hyper Blogs!</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    {% block body %}
-    <body>
-       <h2>{{title}} posted on {{date}}</h2>
-       <h3>Author: {{author}}</h3>
-        <p>
-            {{text}}
-        </p>
-        {{likes}} likes
-    </body>
-    {% endblock %}
+{% extends "navbar.html" %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to Hyper Blogs!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{% block body %}
+
+<body>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h2 class="card-title">{{title}}</h2>
+                        <h5 class="card-subtitle mb-2 text-muted">Posted by: {{author}}</h5>
+                        <p class="card-text">
+                            {{text}}
+
+                        </p>
+                        <button id="like-post-button">
+                            Like this post ♥︎ (Not implemented yet)
+                        </button>
+                    </div>
+                    <div class="card-footer text-muted" style="display: flex; justify-content: space-between;">
+                        <small style="text-align: left;">This post has {{likes}} likes</small>
+                        <small style="text-align: right;">last modified: {{date}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+
 </html>

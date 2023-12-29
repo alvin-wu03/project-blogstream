@@ -24,7 +24,13 @@ def index():
 @app.route("/dashboard")
 def render_dashboard():
     if 'username' in session and 'userID' in session:
-        return render_template("dashboard.html", user = session['username'], logged_in = True, posts = get_posts()[:20])
+        posts = get_posts()[-9:][::-1]
+        truncated_posts = []
+        for post in posts:
+            truncated_text = post[3][:200] + "..." if len(post[3]) > 200 else post[3] # 200 character limit 
+            truncated_post = post[:3] + (truncated_text,) + post[4:]
+            truncated_posts.append(truncated_post)
+        return render_template("dashboard.html", user = session['username'], logged_in = True, posts = truncated_posts)
     else:
         return redirect("/login")
 
@@ -97,12 +103,12 @@ def new_post():
 @app.route("/post/<postid>", methods=['GET'])
 def get_post(postid):
     cursor = db.cursor()
-    cursor.execute('SELECT UserID, Title, Text, Date, Likes FROM posts WHERE PostID=?', postid)
+    cursor.execute('SELECT UserID, Title, Text, Date, Likes FROM posts WHERE PostID=?', (postid,))
     data = cursor.fetchone()
     if data:
         cursor.execute('SELECT Username FROM users WHERE UserID=?', (data[0],))
         username = cursor.fetchone()
-        return render_template("post.html", author=username[0], title=data[1], text=data[2], date=data[3], likes=data[4])
+        return render_template("post.html", post_id = postid, author=username[0], title=data[1], text=data[2], date=data[3], likes=data[4], logged_in = True)
     else:
         return render_template("error.html")
     
@@ -112,6 +118,9 @@ def get_posts():
     cursor.execute('SELECT * FROM posts')
     data = cursor.fetchall()
     if data:
+        for i in range(len(data)):
+            cursor.execute('SELECT Username FROM users WHERE UserID=?', (data[i][1],))
+            data[i] += cursor.fetchone() # Author is always final value
         return data
     else:
         return []

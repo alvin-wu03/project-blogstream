@@ -2,7 +2,8 @@
 <html>
 
   <head>
-    <title>{% block title %}{% endblock %}</title>
+    <!-- <title>{% block title %}{% endblock %}</title> -->
+    <title>Hyper Blogs</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -26,15 +27,16 @@
     {% block form %}
         <div class="new-post-form-wrapper">
                 <form action="/new_post" method="post" class = "new-post-form">
+                    <h5 class="text-center">What's on your mind?</h5>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="title" placeholder="Title" />
+                        <input type="text" class="form-control" name="title" placeholder="Title!" />
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="text" rows="6" placeholder="Text"></textarea>
+                        <textarea class="form-control" name="text" rows="8" placeholder="Text goes here..."></textarea>
                     </div>
-                    <div class="button-group">
+                    <div class="button-group button">
                         <button type="submit" class="btn btn-success">Publish</button>
-                        <button type="button" class="btn btn-dark" onclick="togglePostCreation()">Discard</button>
+                        <button type="button" class="btn btn-dark" onclick="togglePostCreation()">Discard Changes</button>
                     </div>
                 </form>
         </div>

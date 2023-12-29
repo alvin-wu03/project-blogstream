@@ -34,18 +34,29 @@
 }
 
 .new-post-form-wrapper {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 999; /* Ensure it's on top of other content */
 }
 
 .new-post-form {
-  margin-top: 10px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  opacity: 0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  transition: opacity 0.3s ease-in-out;
+  width: 50%;
+}
+
+.new-post-form.active {
+  opacity: 1;
 }
 
 .form-group {
@@ -61,6 +72,14 @@
   margin-top: 10px;
   /* Adjust margin as needed */
 }
+
+#like-post-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 10px; 
+  font-size: 12px
+}
+
 
 .btn {
   flex: 1;
