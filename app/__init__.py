@@ -160,16 +160,14 @@ def get_post(postid):
             cursor.execute('SELECT Username FROM users WHERE UserID=?', (data[0],))
             userData = cursor.fetchone()
             for i in range(len(comments)):
-                user_id = comments[i][1]  # Assuming UserID is at index 2 in comments tuple
+                user_id = comments[i][1]
                 cursor.execute('SELECT Username FROM users WHERE UserID=?', (user_id,))
                 result = cursor.fetchone()
                 if result:
                     print(result)
-                    username = result[0]  # Assuming Username is the first column in users table
+                    username = result[0]
                     comment_author = username
-                    # Append the username to each comment
                     comments[i] = (comments[i], comment_author)
-            #print(comments)
             return render_template("post.html", post_id = postid, user_id = data[0], author=userData[0], title=data[1], text=data[2], date=data[3], likes=data[4], comments = comments, logged_in = True)
         else:
             return render_template("error.html")
@@ -231,7 +229,6 @@ def get_self():
         user_id = session['userID']
         return redirect(url_for('get_user', userid=user_id))
     else:
-        # Handle the case when user_id is not in the session
         return render_template("error.html")
 
 if __name__ == "__main__":
