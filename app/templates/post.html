@@ -13,7 +13,7 @@
 <body>
     <div class="container py-4">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-15">
                 <div class="card bg-dark text-white">
                     <div class="card-body text-center">
                         <h2 class="card-title">{{title}}</h2>
@@ -24,10 +24,13 @@
                         <!-- <button id="like-post-button">
                             Like this post ♥︎ (Not implemented yet)
                         </button> -->
-                        {% if user_id == session['userID'] %}
                         <div class="button-group">
                             <div>
-                                <a class="btn btn-outline-info" type="button" href="#" onclick="togglePostEdit()">Edit Post</a>
+                                <a class="btn btn-outline-success" type="button" href="#" onclick="togglePostComment(event)">Comment</a>
+                            </div>
+                        {% if user_id == session['userID'] %}
+                            <div>
+                                <a class="btn btn-outline-info" type="button" href="#" onclick="togglePostEdit(event)">Edit Post</a>
                             </div>
                             <div>
                                 <form action="/delete_post" method="POST">
@@ -36,15 +39,49 @@
                                     <button class="btn btn-outline-danger" type="submit">Delete Post</button>
                                 </form>
                             </div>
-                        </div>
-                        {% endif %}                      
+                        {% endif %}   
+                        </div>                   
                     </div>
                     <div class="card-footer text-muted" style="display: flex; justify-content: space-between;">
-                        <small style="text-align: left;">This post has {{likes}} likes</small>
+                        <small style="text-align: left;">This post has {{likes}} likes and {{comments|length}} comment(s)</small>
                         <small style="text-align: right;">last modified: {{date}}</small>
+                    </div>
+                    <h5 class="text-center">Comments:</h5>
+                    <div>
+                        {% if comments %}
+                            {% for comment in comments|sort(attribute='4')|reverse %}
+                            <div class="card bg-dark text-white mb-3">
+                                <div class="card-body text-center">
+                                        <div class="card-text">
+                                            {{ comment[0][2] }}
+                                        </div>
+                                        <small class="text-center">Posted by: <a href="/user/{{comment[0][1]}}">{{ comment[-1] }}</a> </small>
+                                        <p class="card-text"><small class="text-muted">at: {{ comment[0][3] }}</small></p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                        <p class="text-white text-center">Be the first to comment!</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <br>
+                <div class="comment-post-form-wrapper">
+                    <form action="/comment" method="post" class="comment-post-form bg-dark text-white">
+                        <h5 class="text-center text-white">Leave a comment:</h5>
+                        <input type="hidden" name="user_id" value="{{ user_id }}">
+                        <input type="hidden" name="post_id" value="{{ post_id }}">
+                        <div class="form-group">
+                            <textarea class="form-control text-white bg-dark" name="comment_text" rows="3" placeholder="What are your thoughts?"></textarea>
+                        </div>
+                        <div class="button-group button">
+                            <button type="submit" class="btn btn-outline-success">Post Comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div> 
         </div>
     </div>
     <div class="edit-post-form-wrapper">
@@ -60,10 +97,10 @@
             </div>
             <div class="button-group button">
                 <button type="submit" class="btn btn-outline-success">Save Changes</button>
-                <button type="button" class="btn btn-outline-danger" onclick="togglePostEdit()">Discard Changes</button>
+                <button type="button" class="btn btn-outline-danger" onclick="togglePostEdit(event)">Discard Changes</button>
             </div>
         </form>
-    </div>
+    </div>   
 </body>
 
 {% endblock %}

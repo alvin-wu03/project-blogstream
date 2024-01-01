@@ -88,6 +88,11 @@ body {
   opacity: 1;
 }
 
+.comment-post-form-wrapper {
+  display: none;
+  width: 100%;
+}
+
 .form-group {
   min-width: 30%;
 }
