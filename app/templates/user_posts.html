@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% extends "navbar.html" %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{% block body %}
+
+<body>
+    <h3 class="text-center text-white">{{username}}'s Posts</h3>
+    <div>
+        {% for post in posts|sort(attribute='0')|reverse %}
+        <div class="card bg-dark text-white mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title mb-3"><a href="/post/{{ post[0] }}">{{ post[2] }}</a></h5>
+                    <!-- <div class="card-text">
+                        {{ post[3] }}
+                    </div> -->
+                    <p class="card-text"><small class="text-muted">Last modified: {{ post[4] }}</small></p>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+       
+
+
+</body>
+{% endblock %}
+
+</html>

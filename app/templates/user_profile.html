@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+{% extends "navbar.html" %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{% block body %}
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Profile box -->
+            <div class="col-md-4">
+                <div class="card bg-dark text-white">
+                    <!-- Image placeholder -->
+                    <img src="../static/img/generic_user.jpg" class="card-img-top" alt="User Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ username }}</h5>
+                        <!-- Add other user details as needed -->
+                        <!-- <p class="card-text">About:
+                            <p>{{about}}</p>
+                        </p> -->
+                        <p class="card-text">Member since: {{ join_date }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posts section -->
+            <div class="col-md-8">
+                <h4 class="text-white">Most recent posts:</h4>
+                <div>
+                    {% if posts %}
+                        {% for post in posts|sort(attribute='4')|reverse %}
+                        <div class="card bg-dark text-white">
+                            <div class="card-body text-center">
+                                <h5 class="card-title mb-3"><a href="/post/{{ post[0] }}">{{ post[2] }}</a></h5>
+                                <!-- <div class="card-text">
+                                    {{ post[3] }}
+                                </div> -->
+                                <p class="card-text"><small class="text-muted">Last modified: {{ post[4] }}</small></p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <br>
+                        <div class="text-center">
+                            <a class="btn btn-outline-info" role="button" href="/user/{{userid}}/posts">Show All Posts</a>
+                        </div>
+                        <br>
+                    {% else %}
+                        <p class="text-white text-center">This user has no posts.</p>
+                    {% endif %}
+                </div>
+            </div>            
+        </div>
+    </div>
+</body>
+
+
+{% endblock %}
+
+</html>

@@ -16,15 +16,18 @@
 }
 
 .navbar :hover {
-  background-color: lightgray;
-  color: black;
+  color: darkgray;
+}
+
+body {
+  background-color:#2e3339;
 }
 
 .form-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50vh;
   /* Ensures the form is centered within the viewport */
 }
 
@@ -52,10 +55,36 @@
   padding: 20px;
   border-radius: 8px;
   transition: opacity 0.3s ease-in-out;
-  width: 50%;
+  width: 40%;
 }
 
 .new-post-form.active {
+  opacity: 1;
+}
+
+.edit-post-form-wrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 999; /* Ensure it's on top of other content */
+}
+
+.edit-post-form {
+  opacity: 0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  transition: opacity 0.3s ease-in-out;
+  width: 40%;
+}
+
+.edit-post-form.active {
   opacity: 1;
 }
 
@@ -88,6 +117,21 @@
   /* Adjust button margins */
 }
 
-#welcome {
-  text-align:center;
+.footer {
+  bottom: 0;
+  width: 100%;
+}
+
+.social-icons a {
+  margin-right: 10px; /* Adjust the spacing as needed */
+  color: inherit;
+}
+
+.social-icons a :hover {
+  color:lightblue;
+  opacity: 0.7; /* Adjust the opacity level as desired */
+}
+
+.social-icons a i {
+  font-size: 32px; /* Adjust the size as needed */
 }

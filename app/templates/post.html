@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Welcome to Hyper Blogs!</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -15,17 +14,30 @@
     <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-dark text-white">
                     <div class="card-body text-center">
                         <h2 class="card-title">{{title}}</h2>
-                        <h5 class="card-subtitle mb-2 text-muted">Posted by: {{author}}</h5>
+                        <h5 class="card-subtitle mb-2 text-muted">Posted by: <a href="/user/{{user_id}}">{{author}}</a></h5>
                         <p class="card-text">
                             {{text}}
-
                         </p>
-                        <button id="like-post-button">
+                        <!-- <button id="like-post-button">
                             Like this post ♥︎ (Not implemented yet)
-                        </button>
+                        </button> -->
+                        {% if user_id == session['userID'] %}
+                        <div class="button-group">
+                            <div>
+                                <a class="btn btn-outline-info" type="button" href="#" onclick="togglePostEdit()">Edit Post</a>
+                            </div>
+                            <div>
+                                <form action="/delete_post" method="POST">
+                                    <input type="hidden" name="user_id" value="{{ user_id }}">
+                                    <input type="hidden" name="post_id" value="{{ post_id }}">
+                                    <button class="btn btn-outline-danger" type="submit">Delete Post</button>
+                                </form>
+                            </div>
+                        </div>
+                        {% endif %}                      
                     </div>
                     <div class="card-footer text-muted" style="display: flex; justify-content: space-between;">
                         <small style="text-align: left;">This post has {{likes}} likes</small>
@@ -34,6 +46,23 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="edit-post-form-wrapper">
+        <form action="/edit_post" method="post" class="edit-post-form bg-dark text-white">
+            <h5 class="text-center text-white">Editing: "{{title}}"</h5>
+            <input type="hidden" name="user_id" value="{{ user_id }}">
+            <input type="hidden" name="post_id" value="{{ post_id }}">
+            <div class="form-group">
+                <input type="text" class="form-control text-white bg-dark" name="title" placeholder="Title!" value="{{title}}">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control text-white bg-dark" name="text" rows="8" placeholder="Text goes here...">{{text}}</textarea>
+            </div>
+            <div class="button-group button">
+                <button type="submit" class="btn btn-outline-success">Save Changes</button>
+                <button type="button" class="btn btn-outline-danger" onclick="togglePostEdit()">Discard Changes</button>
+            </div>
+        </form>
     </div>
 </body>
 
