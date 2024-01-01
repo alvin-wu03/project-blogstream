@@ -20,7 +20,7 @@
             </a>
             <a href="/">Latest Posts</a>
             <a href="/feed">Main Feed</a>
-            <a href="#" onclick="togglePostCreation()">Create Post</a>
+            <a href="#" onclick="togglePostCreation(event)">Create Post</a>
             <a href="/self">Profile</a>
             <a href="/logout">Sign Out</a>
         </nav>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="button-group button">
                         <button type="submit" class="btn btn-outline-success">Publish</button>
-                        <button type="button" class="btn btn-outline-danger" onclick="togglePostCreation()">Discard Changes</button>
+                        <button type="button" class="btn btn-outline-danger" onclick="togglePostCreation(event)">Discard Changes</button>
                     </div>
                 </form>
         </div>
