@@ -1,6 +1,6 @@
 # BlogStream - A Blogging Web Application
 
-Blogstream is a simple full-stack web application which provides users with a space to share their thoughts and experiences through their blog entries.
+Blogstream is a simple full-stack web application which provides users with a space to share their thoughts and experiences through blog entries.
 
 ## Features
 
