@@ -10,6 +10,12 @@ Blogstream is a simple full-stack web application which provides users with a sp
 
 - **Post Engagement**: Users can choose to comment on or like a post that they find interesting.
 
+## Planned Features
+
+- **Migration to PostgreSQL database**
+- **Ability to follow other users and have their posts displayed on the dashboard feed**
+- **Ability to attach images to posts**
+
 ## Getting Started
 
 To set up Blogstream on your local machine, follow these steps:
