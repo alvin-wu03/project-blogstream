@@ -164,7 +164,6 @@ def get_post(postid):
                 cursor.execute('SELECT Username FROM users WHERE UserID=?', (user_id,))
                 result = cursor.fetchone()
                 if result:
-                    print(result)
                     username = result[0]
                     comment_author = username
                     comments[i] = (comments[i], comment_author)

@@ -43,8 +43,7 @@
                         </div>                   
                     </div>
                     <div class="card-footer text-muted" style="display: flex; justify-content: space-between;">
-                        <small style="text-align: left;">This post has {{likes}} likes and {{comments|length}} comment(s)</small>
-                        <small style="text-align: right;">last modified: {{date}}</small>
+                        <small style="text-align: left;">This post has {{likes}} likes and {{comments|length}} comment(s) | last modified: {{date}}</small>
                     </div>
                     <h5 class="text-center">Comments:</h5>
                     <div>
@@ -53,10 +52,10 @@
                             <div class="card bg-dark text-white mb-3">
                                 <div class="card-body text-center">
                                         <div class="card-text">
-                                            {{ comment[0][2] }}
+                                            {{ comment[0][3] }}
                                         </div>
                                         <small class="text-center">Posted by: <a href="/user/{{comment[0][1]}}">{{ comment[-1] }}</a> </small>
-                                        <p class="card-text"><small class="text-muted">at: {{ comment[0][3] }}</small></p>
+                                        <p class="card-text"><small class="text-muted">at: {{ comment[0][4] }}</small></p>
                                 </div>
                             </div>
                             {% endfor %}
